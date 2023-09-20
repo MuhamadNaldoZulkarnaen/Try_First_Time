@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+
+
+<title>mathematical quantity</title>
+
+<script src="site_libs/header-attrs-2.24/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "\e258";
+  font-family: 'Glyphicons Halflings';
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">My Website</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">mathematical quantity</h1>
+
+</div>
+
+
+<p><img
+src="data:image/jpeg;base64,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" /></p>
+<p>A mathematical quantity is an amount. How we measure amounts depends
+on the kind of stuff we are measuring. The real-world stuff might be
+mass or time or length. It equally well can be velocity or volume or
+momentum or yearly corn yield per acre. We live in a world of such
+stuff, some of which is tangible (e.g., corn, mass, force) and some of
+which is harder to get your hands on and your minds around
+(acceleration, crop yield, fuel economy). An important use of calculus
+is helping us conceptualize the abstract kinds of stuff as mathematical
+compositions of simpler stuff. For example, crop yield incorporates mass
+with length and time. Later, you will see us using the more
+scientific-sounding term dimension instead of “stuff.”</p>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
